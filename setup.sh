@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 # Author: Juan Rivas (aka @r1vs3c)
+# Coauthor: Javier Espantaleón (aka @k4lier)
 
 # Colours
 greenColour="\e[0;32m\033[1m"
@@ -33,7 +34,7 @@ function banner(){
 	sleep 0.05
 	echo -e "/ /_/ // /_/ // /_ / /_/ /     _  /_/ /(__  )__  /_/ /_ |/ |/ /_  / / / / /"
 	sleep 0.05
-	echo -e "\__,_/ \__,_/ \__/ \____/      /_.___//____/ _  .___/____/|__/ /_/ /_/ /_/    ${endColour}${yellowColour}(${endColour}${grayColour}By ${endColour}${purpleColour}@r1vs3c${endColour}${yellowColour})${endColour}${turquoiseColour}"
+	echo -e "\__,_/ \__,_/ \__/ \____/      /_.___//____/ _  .___/____/|__/ /_/ /_/ /_/    ${endColour}${yellowColour}(${endColour}${grayColour}By ${endColour}${purpleColour}@r1vs3c & @k4lier${endColour}${yellowColour})${endColour}${turquoiseColour}"
 	sleep 0.05
     	echo -e "                                             /_/${endColour}"
 }
@@ -47,14 +48,18 @@ else
 	sleep 1
 	echo -e "\n\n${blueColour}[*] Installing necessary packages for the environment...\n${endColour}"
 	sleep 2
-	sudo apt install -y kitty rofi feh xclip ranger i3lock-fancy scrot scrub wmname imagemagick cmatrix htop neofetch python3-pip procps tty-clock fzf lsd bat pamixer flameshot
-	if [ $? != 0 ] && [ $? != 130 ]; then
-		echo -e "\n${redColour}[-] Failed to install some packages!\n${endColour}"
-		exit 1
-	else
-		echo -e "\n${greenColour}[+] Done\n${endColour}"
-		sleep 1.5
-	fi
+    sudo apt install -y kitty rofi feh xclip ranger i3lock-fancy scrot scrub wmname imagemagick cmatrix htop python3-pip procps tty-clock fzf lsd bat pamixer flameshot
+
+    if ! command -v neofetch &> /dev/null; then
+        echo -e "${yellowColour}[!] Neofetch not found in apt or system. Installing manually...${endColour}"
+        git clone https://github.com/dylanaraps/neofetch.git /tmp/neofetch
+        sudo cp /tmp/neofetch/neofetch /usr/local/bin/
+        sudo chmod +x /usr/local/bin/neofetch
+        rm -rf /tmp/neofetch
+        echo -e "${greenColour}[+] Neofetch installed manually.${endColour}"
+    else
+        echo -e "${greenColour}[+] Neofetch installed successfully from apt.${endColour}"
+    fi
  
 	echo -e "\n${blueColour}[*] Starting installation of necessary dependencies for the environment...\n${endColour}"
 	sleep 0.5
