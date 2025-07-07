@@ -149,8 +149,8 @@ ctrl + shift + m
 	pamixer --toggle-mute
 
 # ScreenShots
-@Print
+Delete
 	flameshot full
 
-ctrl + @Print
+ctrl + Delete
 	flameshot gui
