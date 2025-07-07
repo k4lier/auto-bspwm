@@ -35,9 +35,6 @@ chmod +x setup.sh
 
 ![overview2](/assets/overview2.png "overview2")
 
-![overview3](/assets/overview3.png "overview3")
-
-
 ## Keyboard shortcuts
 - <kbd>Windows</kbd> + <kbd>Enter</kbd>: Open a terminal emulator window (kitty).
 - <kbd>Windows</kbd> + <kbd>W</kbd>: Close the current window.
@@ -103,4 +100,3 @@ This configuration uses the following software:
 
 ## Credits
 - This environment has been inspired by the functionalities of [S4vitar's](https://github.com/s4vitar) environment.
-- Thanks to [Cube](https://github.com/ZLCube) for their contribution to the creation of the `archkali.png` wallpaper.
